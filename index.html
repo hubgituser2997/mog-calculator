@@ -18,11 +18,23 @@
             margin: 20px 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
+        }
+        .slider-container label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .slider-container input {
+            width: 100%;
+        }
+        .slider-container span {
+            margin-top: 5px;
+            display: block;
         }
         .slider-tip {
             font-size: 12px;
             color: #555;
+            margin-top: 5px;
         }
         .score {
             font-size: 24px;
@@ -37,52 +49,52 @@
         <p>Use the sliders below to input your stats:</p>
 
         <div class="slider-container">
-            <label for="height-slider">Height: </label>
+            <label for="height-slider">Height:</label>
             <input type="range" id="height-slider" min="60" max="84" step="1" value="72">
-            <span id="height-value">6ft 0in</span> (<span id="height-cm">183 cm</span>)
+            <span><span id="height-value">6ft 0in</span> (<span id="height-cm">183 cm</span>)</span>
         </div>
 
         <div class="slider-container">
-            <label for="iq-slider">IQ: </label>
+            <label for="iq-slider">IQ:</label>
             <input type="range" id="iq-slider" min="60" max="140" step="1" value="100">
             <span id="iq-value">100</span>
             <div class="slider-tip">60 is mentally challenged, 100 is average, 140 is genius</div>
         </div>
 
         <div class="slider-container">
-            <label for="bodyfat-slider">Body Fat Percentage: </label>
+            <label for="bodyfat-slider">Body Fat Percentage:</label>
             <input type="range" id="bodyfat-slider" min="10" max="50" step="1" value="30">
             <span id="bodyfat-value">30%</span>
         </div>
 
         <div class="slider-container">
-            <label for="friends-slider">Number of Close Friends: </label>
+            <label for="friends-slider">Number of Close Friends:</label>
             <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
             <span id="friends-value">5</span>
         </div>
 
         <div class="slider-container">
-            <label for="networth-slider">Net Worth: </label>
+            <label for="networth-slider">Net Worth:</label>
             <input type="range" id="networth-slider" min="0" max="6" step="1" value="3">
             <span id="networth-value">$10,000</span>
         </div>
 
         <div class="slider-container">
-            <label for="penis-slider">Penis Length: </label>
+            <label for="penis-slider">Penis Length:</label>
             <input type="range" id="penis-slider" min="1" max="9" step="1" value="5">
             <span id="penis-value">5 inches</span>
             <div class="slider-tip">1 inch or less is extremely rare, 9 inches or more is exceptionally large</div>
         </div>
 
         <div class="slider-container">
-            <label for="acne-slider">Acne: </label>
+            <label for="acne-slider">Acne:</label>
             <input type="range" id="acne-slider" min="0" max="4" step="1" value="2">
             <span id="acne-value">Moderate acne</span>
             <div class="slider-tip">0: No acne at all, 4: Face filled with acne</div>
         </div>
 
         <div class="slider-container">
-            <label for="muscle-slider">Muscularity: </label>
+            <label for="muscle-slider">Muscularity:</label>
             <input type="range" id="muscle-slider" min="0" max="3" step="1" value="1">
             <span id="muscle-value">Somewhat muscular</span>
             <div class="slider-tip">0: No significant muscle, 3: Superhero-level muscle</div>
