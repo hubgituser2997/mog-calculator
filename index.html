@@ -627,6 +627,11 @@
             if (face <= 3) {
                 score -= 2; // Apply penalty for terrible face
             }
+
+            // Set minimum possible score to zero
+            if (score <= 0) {
+                score = 0;
+            }
                         
                     
             // Update the Mog Score display
