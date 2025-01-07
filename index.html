@@ -503,6 +503,8 @@
             const history = parseInt(historySlider.value);
             const confidence = parseInt(confidenceSlider.value);
 
+            const liveWithParentsScore = liveWithParentsNo.checked ? 1 : 0; // Binary score
+
             // Balding score logic
             let baldingScore;
             switch (balding) {
@@ -563,27 +565,45 @@
             updateConfidenceDisplay(confidence);
 
             // Calculate the Mog Score (simple proportional formula for now)
-            const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0;
+            //const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0; [remove if not needed]
+            
+            // Define weight percentages for each metric
+            const weightHeight = 25; // Example: Height contributes 25% to the total score
+            const weightIQ = 10;
+            const weightBodyFat = 5;
+            const weightPenis = 5;
+            const weightConfidence = 15;
+            const weightFace = 10;
+            const weightFriends = 5;
+            const weightNetWorth = 10;
+            const weightHistory = 5;
+
+            const maxScore = 100; // Total percentage must equal 100
+
+            // Normalize metrics and calculate weighted contributions
+            const normalizedHeight = (height - 60) / (78 - 60); // Height range 60-78 inches
+            const normalizedIQ = (iq - 60) / (140 - 60); // IQ range 60-140
+            const normalizedBodyFat = 1 - (bodyFat - 10) / (50 - 10); // Inverse; lower body fat is better
+            const normalizedPenis = (penis - 3) / (10 - 3); // Penis range 3-10 inches
+            const normalizedConfidence = confidence / 5; // Confidence range 0-5
+            const normalizedFace = face / 10; // Face range 1-10
+            const normalizedFriends = friends / 20; // Friends range 0-20
+            const normalizedNetWorth = netWorth / 5; // Net Worth range 0-5
+            const normalizedHistory = history / 5; // History range 0-5
+        
+            // Calculate the total score as a weighted sum
             const score = Math.round(
-                (height * 10 / 12) +
-                (iq / 2) -
-                (bodyFat / 5) +
-                (friends * 2) +
-                (netWorth * 20) +
-                (penis * 5) +
-                (girth * 5) -
-                (acne * 5) +
-                (muscle * 10) +
-                (face * 10) +
-                (socialSkill * 15) +
-                (bodyFrame * 10) +
-                (voiceDepth * -10) +
-                liveWithParentsScore -
-                (autismSpectrum * 10) +
-                (ethnicityPerception * 10) +
-                baldingScore +
-                (history * 10) + // History with women
-                (confidence * 15) // Confidence level
+                normalizedHeight * weightHeight +
+                normalizedIQ * weightIQ +
+                normalizedBodyFat * weightBodyFat +
+                normalizedPenis * weightPenis +
+                normalizedConfidence * weightConfidence +
+                normalizedFace * weightFace +
+                normalizedFriends * weightFriends +
+                normalizedNetWorth * weightNetWorth +
+                normalizedHistory * weightHistory +
+                baldingScore * 5 + // Example: balding contributes 5% (adjust as needed)
+                liveWithParentsScore * -5 // Penalty for living with parents
             );
                     
             // Update the Mog Score display
