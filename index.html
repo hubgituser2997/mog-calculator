@@ -233,12 +233,13 @@
 
         <h2>Compare your score:</h2>
         <p>           
-            Truecel: 49 or lower<br>
-            Incel: 50-59<br>
-            Normie: 60 - 79<br>
-            Average man: 70<br>
-            Chad: 80-99<br>
-            Gigachad: 115+
+            Gigatruecel: 0-9<br>
+            Truecel: 10-29<br>
+            Incel: 30-49<br>
+            Normie: 50 - 99<br>
+            Average man: 73<br>
+            Chad: 100-119<br>
+            Gigachad: 120+
             
         </p>
         
@@ -663,16 +664,19 @@
             const userType = document.getElementById('user-type');
             const userDescription = document.getElementById('user-description');
         
-            if (score < 50) {
-                userType.textContent = "You are a: Truecel";
-                userDescription.textContent = "It's over for you bro.";
-            } else if (score < 60) {
+            if (score < 10) {
+                userType.textContent = "You are a: Gigatruecel";
+                userDescription.textContent = "You are beyond truecel. Your existence is pain. There is no hope.";
+            } else if (score < 30) {
+                userType.textContent = "You are an: Truecel";
+                userDescription.textContent = "You an involuntary celibate with no chance of ascension."; 
+            } else if (score < 50) {
                 userType.textContent = "You are an: Incel";
                 userDescription.textContent = "You are likely an involuntary celibate, but ascension may be possible.";            
-            } else if (score < 80) {
+            } else if (score < 100) {
                 userType.textContent = "You are a: Normie";
                 userDescription.textContent = "A Normie has average attributes in most areas.";
-            } else if (score < 100) {
+            } else if (score < 120) {
                 userType.textContent = "You are a: Chad";
                 userDescription.textContent = "You are admired by many. With above-average looks, confidence, and status, you naturally win at most aspects of life.";
             } else {
