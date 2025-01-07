@@ -122,6 +122,18 @@
             <span id="voice-depth-value">Normal male voice pitch</span>
         </div>
 
+        <div class="slider-container">
+            <label>Do you live with your parent(s)?</label>
+            <input type="radio" id="live-with-parents-yes" name="live-with-parents" value="yes" checked> Yes
+            <input type="radio" id="live-with-parents-no" name="live-with-parents" value="no"> No
+        </div>
+
+        <div class="slider-container">
+            <label for="autism-spectrum-slider">Autism Spectrum:</label>
+            <input type="range" id="autism-spectrum-slider" min="0" max="4" step="1" value="0">
+            <span id="autism-spectrum-value">Neurotypical</span>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -155,7 +167,11 @@
         const bodyFrameValue = document.getElementById('body-frame-value');
         const voiceDepthSlider = document.getElementById('voice-depth-slider');
         const voiceDepthValue = document.getElementById('voice-depth-value');
+        const autismSpectrumSlider = document.getElementById('autism-spectrum-slider');
+        const autismSpectrumValue = document.getElementById('autism-spectrum-value');
         const mogScore = document.getElementById('mog-score');
+        const liveWithParentsYes = document.getElementById('live-with-parents-yes');
+        const liveWithParentsNo = document.getElementById('live-with-parents-no');
 
         // Net Worth brackets
         const netWorthLabels = [
@@ -207,6 +223,15 @@
             "Normal male voice pitch",
             "Somewhat high pitch voice",
             "Feminine sounding voice"
+        ];
+
+        // Autism spectrum levels
+        const autismSpectrumLabels = [
+            "Neurotypical",
+            "Not diagnosed but you were the \"weird kid\" in school",
+            "Asperger's syndrome",
+            "Diagnosed autism (not severe)",
+            "Severe autism"
         ];
 
         // Function to update height display in feet/inches and cm
@@ -274,6 +299,11 @@
             voiceDepthValue.textContent = voiceDepthLabels[level];
         }
 
+        // Function to update autism spectrum display
+        function updateAutismSpectrumDisplay(level) {
+            autismSpectrumValue.textContent = autismSpectrumLabels[level];
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -289,6 +319,7 @@
             const socialSkill = parseInt(socialSkillSlider.value);
             const bodyFrame = parseInt(bodyFrameSlider.value);
             const voiceDepth = parseInt(voiceDepthSlider.value);
+            const autismSpectrum = parseInt(autismSpectrumSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
@@ -326,8 +357,12 @@
             // Update the voice depth display
             updateVoiceDepthDisplay(voiceDepth);
 
+            // Update the autism spectrum display
+            updateAutismSpectrumDisplay(autismSpectrum);
+
             // Calculate the Mog Score (simple proportional formula for now)
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10)); // Weighted formula
+            const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0;
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10) + liveWithParentsScore - (autismSpectrum * 10));
 
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -346,10 +381,11 @@
         socialSkillSlider.addEventListener('input', updateMogScore);
         bodyFrameSlider.addEventListener('input', updateMogScore);
         voiceDepthSlider.addEventListener('input', updateMogScore);
+        autismSpectrumSlider.addEventListener('input', updateMogScore);
+        liveWithParentsYes.addEventListener('change', updateMogScore);
+        liveWithParentsNo.addEventListener('change', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
     </script>
-</body>
-</html>
-
+</
