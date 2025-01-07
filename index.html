@@ -243,7 +243,7 @@
             Normie: 60 - 79<br>
             Average man: 70<br>
             Chad: 80-99<br>
-            Gigachad: 100+
+            Gigachad: 115+
             
         </p>
         
@@ -627,6 +627,12 @@
             if (face <= 3) {
                 score -= 2; // Apply penalty for terrible face
             }
+            if (netWorth >= 1000000) {
+                score += 4; // Apply bonus for being rich
+            }
+            if (netWorth >= 10000000) {
+                score += 8; // Apply bonus for being very rich
+            }
 
             // Set minimum possible score to zero
             if (score <= 0) {
@@ -664,7 +670,7 @@
 
         // Function to update the score bar
         function updateScoreBar(score) {
-            const maxScore = 100; // Set the maximum score for the bar
+            const maxScore = 120; // Set the maximum score for the bar
             const scorePercentage = Math.min((score / maxScore) * 100, 100); // Calculate percentage
             const currentScoreBar = document.getElementById('current-score');
             currentScoreBar.style.width = `${scorePercentage}%`;
