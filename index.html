@@ -595,6 +595,7 @@
             const normalizedIQ = (iq - 60) / (140 - 60); // IQ range 60-140
             const normalizedBodyFat = 1 - (bodyFat - 10) / (50 - 10); // Inverse; lower body fat is better
             const normalizedPenis = (penis - 3) / (10 - 3); // Penis range 3-10 inches
+            const normalizedGirth = (girth - 3) / (9 - 3) //Girth range 3-9 inches
             const normalizedConfidence = confidence / 5; // Confidence range 0-5
             const normalizedFace = face / 10; // Face range 1-10
             const normalizedFriends = friends / 20; // Friends range 0-20
@@ -607,6 +608,7 @@
                 normalizedIQ * weightIQ +
                 normalizedBodyFat * weightBodyFat +
                 normalizedPenis * weightPenis +
+                normalizedGirth * weightGirth +
                 normalizedConfidence * weightConfidence +
                 normalizedFace * weightFace +
                 normalizedFriends * weightFriends +
