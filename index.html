@@ -239,6 +239,8 @@
             </div>
         </div>
         <p>Your score: <span id="mog-score">0</span></p>
+        <h2 id="user-type">You are a:</h2>
+        <p id="user-description"></p>
         
     </div>
 
@@ -576,6 +578,24 @@
                     
             // Update the Mog Score display
             mogScore.textContent = score;
+
+            // Update the user type and description
+            const userType = document.getElementById('user-type');
+            const userDescription = document.getElementById('user-description');
+        
+            if (score < 200) {
+                userType.textContent = "You are a: Truecel";
+                userDescription.textContent = "A Truecel is someone who struggles immensely in social and personal aspects of life. Significant improvements in lifestyle and confidence are needed.";
+            } else if (score < 400) {
+                userType.textContent = "You are a: Normie";
+                userDescription.textContent = "A Normie has average attributes in most areas. There's room for improvement, but you're doing okay!";
+            } else if (score < 600) {
+                userType.textContent = "You are a: Chad";
+                userDescription.textContent = "A Chad is admired by many, with above-average looks, confidence, and status. Keep shining!";
+            } else {
+                userType.textContent = "You are a: Gigachad";
+                userDescription.textContent = "A Gigachad is the pinnacle of attraction and dominance. Few can reach this level. Congratulations!";
+            }
 
             // Update the score bar
             updateScoreBar(score);
