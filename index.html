@@ -16,6 +16,13 @@
         }
         .slider-container {
             margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slider-tip {
+            font-size: 12px;
+            color: #555;
         }
         .score {
             font-size: 24px;
@@ -37,8 +44,9 @@
 
         <div class="slider-container">
             <label for="iq-slider">IQ: </label>
-            <input type="range" id="iq-slider" min="70" max="130" step="1" value="100">
+            <input type="range" id="iq-slider" min="60" max="140" step="1" value="100">
             <span id="iq-value">100</span>
+            <div class="slider-tip">60 is mentally challenged, 100 is average, 140 is genius</div>
         </div>
 
         <div class="slider-container">
@@ -51,6 +59,12 @@
             <label for="friends-slider">Number of Close Friends: </label>
             <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
             <span id="friends-value">5</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="networth-slider">Net Worth: </label>
+            <input type="range" id="networth-slider" min="0" max="6" step="1" value="3">
+            <span id="networth-value">$10,000</span>
         </div>
 
         <div class="score-container">
@@ -70,7 +84,20 @@
         const bodyFatValue = document.getElementById('bodyfat-value');
         const friendsSlider = document.getElementById('friends-slider');
         const friendsValue = document.getElementById('friends-value');
+        const netWorthSlider = document.getElementById('networth-slider');
+        const netWorthValue = document.getElementById('networth-value');
         const mogScore = document.getElementById('mog-score');
+
+        // Net Worth brackets
+        const netWorthLabels = [
+            "Dead Broke",
+            "$1,000",
+            "$10,000",
+            "$100,000",
+            "$1,000,000",
+            "$5,000,000",
+            "$10,000,000 or more"
+        ];
 
         // Function to update height display in feet/inches and cm
         function updateHeightDisplay(heightInInches) {
@@ -92,6 +119,16 @@
             friendsValue.textContent = friends === 0 ? `0` : friends === 20 ? `20 or more` : `${friends}`;
         }
 
+        // Function to update net worth display
+        function updateNetWorthDisplay(index) {
+            netWorthValue.textContent = netWorthLabels[index];
+        }
+
+        // Function to update IQ display
+        function updateIqDisplay(iq) {
+            iqValue.textContent = iq === 60 ? `60 or less` : iq === 140 ? `140 or more` : `${iq}`;
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -99,12 +136,13 @@
             const iq = parseInt(iqSlider.value);
             const bodyFat = parseInt(bodyFatSlider.value);
             const friends = parseInt(friendsSlider.value);
+            const netWorth = parseInt(netWorthSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
 
             // Update the IQ display
-            iqValue.textContent = iq;
+            updateIqDisplay(iq);
 
             // Update the body fat display
             updateBodyFatDisplay(bodyFat);
@@ -112,8 +150,11 @@
             // Update the friends display
             updateFriendsDisplay(friends);
 
+            // Update the net worth display
+            updateNetWorthDisplay(netWorth);
+
             // Calculate the Mog Score (simple proportional formula for now)
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2)); // Weighted formula
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20)); // Weighted formula
 
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -124,6 +165,7 @@
         iqSlider.addEventListener('input', updateMogScore);
         bodyFatSlider.addEventListener('input', updateMogScore);
         friendsSlider.addEventListener('input', updateMogScore);
+        netWorthSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
