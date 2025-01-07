@@ -627,11 +627,17 @@
             if (face <= 3) {
                 score -= 2; // Apply penalty for terrible face
             }
-            if (netWorth >= 1000000) {
-                score += 4; // Apply bonus for being rich
+            if (autismSpectrum <= 1) {
+                score -= 4; // Apply penalty for autism
             }
-            if (netWorth >= 10000000) {
-                score += 8; // Apply bonus for being very rich
+            if (autismSpectrum <= 0) {
+                score -= 4; // Apply penalty for severe autism
+            }   
+            if (netWorth >= 4) {
+                score += 3; // Apply bonus for being rich ($1M)
+            }
+            if (netWorth >= 5) {
+                score += 6; // Apply bonus for being very rich ($10M)
             }
 
             // Set minimum possible score to zero
