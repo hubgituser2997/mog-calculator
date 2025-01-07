@@ -609,13 +609,19 @@
             
 
             // Conditional penalties
+            if (penis <= 3) 
+                score -= 3; // Apply penalty
+            }
+
+            if (penis <= 3.5) 
+                score -= 2; // Apply penalty
+            }
+
             if (penis <= 4) 
-                score -= 5; // Apply penalty
+                score -= 2; // Apply penalty
             }
             
-            if (confidence === 0) {
-                score -= 10; // Apply penalty
-            }
+
 
             
                     
