@@ -87,11 +87,13 @@
         
         .threshold {
             position: absolute;
-            bottom: 35px;
+            bottom: 35px; /* Positions labels above the bar */
             transform: translateX(-50%);
             font-size: 12px;
             font-weight: bold;
             color: black;
+            background-color: yellow; /* Temporary: Helps test visibility */
+            z-index: 10; /* Ensures labels are above the bar */
         }
     </style>
 </head>
