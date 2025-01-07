@@ -210,7 +210,7 @@
 
         <div class="slider-container">
             <label for="friends-slider">Number of Close Friends:</label>
-            <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
+            <input type="range" id="friends-slider" min="0" max="10" step="1" value="5">
             <span id="friends-value">5</span>
         </div>
         
@@ -407,7 +407,7 @@
 
         // Function to update number of close friends display
         function updateFriendsDisplay(friends) {
-            friendsValue.textContent = friends === 0 ? `0` : friends === 20 ? `20 or more` : `${friends}`;
+            friendsValue.textContent = friends === 0 ? `0` : friends === 10 ? `10 or more` : `${friends}`;
         }
 
         // Function to update net worth display
@@ -508,11 +508,11 @@
             // Balding score logic
             let baldingScore;
             switch (balding) {
-                case 0: baldingScore = 10; break; // Perfect hairline
-                case 1: baldingScore = 5; break; // Slightly recessed hairline
+                case 0: baldingScore = 4; break; // Perfect hairline
+                case 1: baldingScore = 2; break; // Slightly recessed hairline
                 case 2: baldingScore = 0; break; // Recessed hairline
-                case 3: baldingScore = -10; break; // Balding (worst)
-                case 4: baldingScore = -5; break; // Bald
+                case 3: baldingScore = -4; break; // Balding (worst)
+                case 4: baldingScore = -2; break; // Bald
             }
             // Update the height display
             updateHeightDisplay(height);
@@ -568,15 +568,25 @@
             //const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0; [remove if not needed]
             
             // Define weight percentages for each metric
-            const weightHeight = 25; // Example: Height contributes 25% to the total score
-            const weightIQ = 10;
-            const weightBodyFat = 5;
-            const weightPenis = 5;
-            const weightConfidence = 15;
-            const weightFace = 10;
+            const weightHeight = 18; // Example: Height contributes 25% to the total score
+            const weightFace = 35;
+            const weightBodyFat = 2;
+            const weightPenis = 3;
+            const weightGirth = 3;
+            const weightAcne = 3;
+            const weightMuscularity = 3;
+            const weightFrame = 3;
+            const weightVoice = 3;
+            const weightEthnicity = 5;
+            const weightBalding = 3;
+            const weightIQ = 3;
+            const weightAutism = 10;
+            const weightSocial = 5;
+            const weightConfidence = 5;
+            const weightLiveWithParents = 5;
             const weightFriends = 5;
-            const weightNetWorth = 10;
             const weightHistory = 5;
+            const weightNetWorth = 10;
 
             const maxScore = 100; // Total percentage must equal 100
 
@@ -602,8 +612,8 @@
                 normalizedFriends * weightFriends +
                 normalizedNetWorth * weightNetWorth +
                 normalizedHistory * weightHistory +
-                baldingScore * 5 + // Example: balding contributes 5% (adjust as needed)
-                liveWithParentsScore * -5 // Penalty for living with parents
+                baldingScore + // Example: balding contributes 5% (adjust as needed)
+                liveWithParentsScore * -weightLiveWithParents // Penalty for living with parents
             );
                     
             // Update the Mog Score display
