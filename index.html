@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mog Calculator</title>
     <style>
+        #height-display {
+            white-space: nowrap;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 50px;
@@ -51,7 +54,9 @@
         <div class="slider-container">
             <label for="height-slider">Height:</label>
             <input type="range" id="height-slider" min="60" max="84" step="1" value="72">
-            <span id="height-value">6ft 0in</span> (<span id="height-cm">183 cm</span>)
+            <span id="height-display">
+                <span id="height-value">6ft 0in</span> (<span id="height-cm">183 cm</span>)
+            </span>
         </div>
 
         <div class="slider-container">
@@ -152,7 +157,7 @@
         </div>
     </div>
 
-    <script>
+    <script>    
         // Get references to the sliders and output elements
         const heightSlider = document.getElementById('height-slider');
         const heightValue = document.getElementById('height-value');
