@@ -41,6 +41,18 @@
             <span id="iq-value">100</span>
         </div>
 
+        <div class="slider-container">
+            <label for="bodyfat-slider">Body Fat Percentage: </label>
+            <input type="range" id="bodyfat-slider" min="10" max="50" step="1" value="30">
+            <span id="bodyfat-value">30%</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="friends-slider">Number of Close Friends: </label>
+            <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
+            <span id="friends-value">5</span>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -54,6 +66,10 @@
         const heightCm = document.getElementById('height-cm');
         const iqSlider = document.getElementById('iq-slider');
         const iqValue = document.getElementById('iq-value');
+        const bodyFatSlider = document.getElementById('bodyfat-slider');
+        const bodyFatValue = document.getElementById('bodyfat-value');
+        const friendsSlider = document.getElementById('friends-slider');
+        const friendsValue = document.getElementById('friends-value');
         const mogScore = document.getElementById('mog-score');
 
         // Function to update height display in feet/inches and cm
@@ -62,8 +78,18 @@
             const inches = heightInInches % 12;
             const cm = Math.round(heightInInches * 2.54);
 
-            heightValue.textContent = `${feet}ft ${inches}in`;
+            heightValue.textContent = heightInInches === 60 ? `5ft or less` : heightInInches === 84 ? `7ft or more` : `${feet}ft ${inches}in`;
             heightCm.textContent = `${cm} cm`;
+        }
+
+        // Function to update body fat percentage display
+        function updateBodyFatDisplay(bodyFat) {
+            bodyFatValue.textContent = bodyFat === 10 ? `10% or less` : bodyFat === 50 ? `50% or more` : `${bodyFat}%`;
+        }
+
+        // Function to update number of close friends display
+        function updateFriendsDisplay(friends) {
+            friendsValue.textContent = friends === 0 ? `0` : friends === 20 ? `20 or more` : `${friends}`;
         }
 
         // Function to update the Mog Score
@@ -71,6 +97,8 @@
             // Get the values from the sliders
             const height = parseInt(heightSlider.value);
             const iq = parseInt(iqSlider.value);
+            const bodyFat = parseInt(bodyFatSlider.value);
+            const friends = parseInt(friendsSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
@@ -78,8 +106,14 @@
             // Update the IQ display
             iqValue.textContent = iq;
 
+            // Update the body fat display
+            updateBodyFatDisplay(bodyFat);
+
+            // Update the friends display
+            updateFriendsDisplay(friends);
+
             // Calculate the Mog Score (simple proportional formula for now)
-            const score = Math.round((height * 10 / 12) + (iq / 2)); // Height weighted more heavily
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2)); // Weighted formula
 
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -88,6 +122,8 @@
         // Add event listeners to update the Mog Score when the sliders change
         heightSlider.addEventListener('input', updateMogScore);
         iqSlider.addEventListener('input', updateMogScore);
+        bodyFatSlider.addEventListener('input', updateMogScore);
+        friendsSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
