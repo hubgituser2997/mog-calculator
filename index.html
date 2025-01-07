@@ -151,6 +151,24 @@
             <span id="ethnicity-perception-value">Some women are attracted to my ethnicity</span>
         </div>
 
+        <div class="slider-container">
+            <label for="balding-slider">Balding:</label>
+            <input type="range" id="balding-slider" min="0" max="4" step="1" value="0">
+            <span id="balding-value">Perfect hairline</span>
+        </div>
+        
+        <div class="slider-container">
+            <label for="history-slider">History with Women:</label>
+            <input type="range" id="history-slider" min="0" max="4" step="1" value="0">
+            <span id="history-value">Kissless, handholdless, hugless virgin</span>
+        </div>
+        
+        <div class="slider-container">
+            <label for="confidence-slider">Confidence Level with Women:</label>
+            <input type="range" id="confidence-slider" min="0" max="5" step="1" value="0">
+            <span id="confidence-value">No woman will ever even settle for me, I will die a KHHV</span>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -193,6 +211,12 @@
         const liveWithParentsNo = document.getElementById('live-with-parents-no');
         const ethnicityPerceptionSlider = document.getElementById('ethnicity-perception-slider');
         const ethnicityPerceptionValue = document.getElementById('ethnicity-perception-value');
+        const baldingSlider = document.getElementById('balding-slider');
+        const baldingValue = document.getElementById('balding-value');
+        const historySlider = document.getElementById('history-slider');
+        const historyValue = document.getElementById('history-value');
+        const confidenceSlider = document.getElementById('confidence-slider');
+        const confidenceValue = document.getElementById('confidence-value');
 
         // Net Worth brackets
         const netWorthLabels = [
@@ -259,6 +283,31 @@
             "Women are generally not attracted to my ethnicity",
             "Some women are attracted to my ethnicity",
             "Women generally love my ethnicity"
+        ];
+
+        const baldingLabels = [
+            "Perfect hairline",
+            "Slightly recessed hairline",
+            "Recessed hairline",
+            "Balding",
+            "Bald"
+        ];
+        
+        const historyLabels = [
+            "Kissless, handholdless, hugless virgin",
+            "Hugged a woman",
+            "Held hands with a woman",
+            "Kissed a woman",
+            "Had sex with a woman"
+        ];
+        
+        const confidenceLabels = [
+            "No woman will ever even settle for me, I will die a KHHV",
+            "A 2/10 woman could settle for me if I'm lucky",
+            "A below average woman would settle for me",
+            "An average woman could settle for me",
+            "An average woman could fall in love with me",
+            "A beautiful woman could fall in love with me"
         ];
 
         // Function to update height display in feet/inches and cm
@@ -340,6 +389,18 @@
             ethnicityPerceptionValue.textContent = ethnicityPerceptionLabels[level];
         }
 
+        function updateBaldingDisplay(level) {
+            baldingValue.textContent = baldingLabels[level];
+        }
+        
+        function updateHistoryDisplay(level) {
+            historyValue.textContent = historyLabels[level];
+        }
+        
+        function updateConfidenceDisplay(level) {
+            confidenceValue.textContent = confidenceLabels[level];
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -358,6 +419,18 @@
             const voiceDepth = parseInt(voiceDepthSlider.value);
             const autismSpectrum = parseInt(autismSpectrumSlider.value);
             const ethnicityPerception = parseInt(ethnicityPerceptionSlider.value);
+            const balding = parseInt(baldingSlider.value);
+            const history = parseInt(historySlider.value);
+            const confidence = parseInt(confidenceSlider.value);
+
+            // Balding score logic
+            let baldingScore;
+            switch (balding) {
+                case 0: baldingScore = 10; break; // Perfect hairline
+                case 1: baldingScore = 5; break; // Slightly recessed hairline
+                case 2: baldingScore = 0; break; // Recessed hairline
+                case 3: baldingScore = -10; break; // Balding (worst)
+                case 4: baldingScore = -5; break; // Bald
 
             // Update the height display
             updateHeightDisplay(height);
@@ -404,9 +477,35 @@
             // Update the ethnicity perception display
             updateEthnicityPerceptionDisplay(ethnicityPerception);
 
+            // Update slider displays
+            updateBaldingDisplay(balding);
+            updateHistoryDisplay(history);
+            updateConfidenceDisplay(confidence);
+
             // Calculate the Mog Score (simple proportional formula for now)
             const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0;
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) + (girth * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10) + liveWithParentsScore - (autismSpectrum * 10) + (ethnicityPerception * 10));
+            const score = Math.round(
+                (height * 10 / 12) +
+                (iq / 2) -
+                (bodyFat / 5) +
+                (friends * 2) +
+                (netWorth * 20) +
+                (penis * 5) +
+                (girth * 5) -
+                (acne * 5) +
+                (muscle * 10) +
+                (face * 10) +
+                (socialSkill * 15) +
+                (bodyFrame * 10) +
+                (voiceDepth * -10) +
+                liveWithParentsScore -
+                (autismSpectrum * 10) +
+                (ethnicityPerception * 10) +
+                baldingScore +
+                (history * 10) + // History with women
+                (confidence * 15) // Confidence level
+            );
+                    
             // Update the Mog Score display
             mogScore.textContent = score;
         }
@@ -429,6 +528,9 @@
         liveWithParentsYes.addEventListener('change', updateMogScore);
         liveWithParentsNo.addEventListener('change', updateMogScore);
         ethnicityPerceptionSlider.addEventListener('input', updateMogScore);
+        baldingSlider.addEventListener('input', updateMogScore);
+        historySlider.addEventListener('input', updateMogScore);
+        confidenceSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
