@@ -69,28 +69,16 @@
         </div>
 
         <div class="slider-container">
-            <label for="iq-slider">IQ:</label>
-            <input type="range" id="iq-slider" min="60" max="140" step="1" value="100">
-            <span id="iq-value">100</span>
-            <div class="slider-tip">60 is mentally challenged, 100 is average, 140 is genius</div>
+            <label for="face-slider">Face Rating (1-10):</label>
+            <input type="range" id="face-slider" min="1" max="10" step="1" value="5">
+            <span id="face-value">5</span>
+            <div class="slider-tip">1 is severe facial deformity, 5 is average, 10 is perfection</div>
         </div>
 
         <div class="slider-container">
             <label for="bodyfat-slider">Body Fat Percentage:</label>
             <input type="range" id="bodyfat-slider" min="10" max="50" step="1" value="30">
             <span id="bodyfat-value">30%</span>
-        </div>
-
-        <div class="slider-container">
-            <label for="friends-slider">Number of Close Friends:</label>
-            <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
-            <span id="friends-value">5</span>
-        </div>
-
-        <div class="slider-container">
-            <label for="networth-slider">Net Worth:</label>
-            <input type="range" id="networth-slider" min="0" max="5" step="1" value="3">
-            <span id="networth-value">$10,000</span>
         </div>
 
         <div class="slider-container">
@@ -118,19 +106,6 @@
         </div>
 
         <div class="slider-container">
-            <label for="face-slider">Face Rating (1-10):</label>
-            <input type="range" id="face-slider" min="1" max="10" step="1" value="5">
-            <span id="face-value">5</span>
-            <div class="slider-tip">1 is severe facial deformity, 5 is average, 10 is perfection</div>
-        </div>
-
-        <div class="slider-container">
-            <label for="social-skill-slider">Social Skill:</label>
-            <input type="range" id="social-skill-slider" min="0" max="3" step="1" value="1">
-            <span id="social-skill-value">Socially inept</span>
-        </div>
-
-        <div class="slider-container">
             <label for="body-frame-slider">Body Frame:</label>
             <input type="range" id="body-frame-slider" min="0" max="3" step="1" value="1">
             <span id="body-frame-value">Unusual frame</span>
@@ -140,18 +115,6 @@
             <label for="voice-depth-slider">Voice Depth:</label>
             <input type="range" id="voice-depth-slider" min="0" max="4" step="1" value="2">
             <span id="voice-depth-value">Normal male voice pitch</span>
-        </div>
-
-        <div class="slider-container">
-            <label>Do you live with your parent(s)?</label>
-            <input type="radio" id="live-with-parents-yes" name="live-with-parents" value="yes" checked> Yes
-            <input type="radio" id="live-with-parents-no" name="live-with-parents" value="no"> No
-        </div>
-
-        <div class="slider-container">
-            <label for="autism-spectrum-slider">Autism Spectrum:</label>
-            <input type="range" id="autism-spectrum-slider" min="0" max="4" step="1" value="0">
-            <span id="autism-spectrum-value">Neurotypical</span>
         </div>
 
         <div class="slider-container">
@@ -165,18 +128,60 @@
             <input type="range" id="balding-slider" min="0" max="4" step="1" value="0">
             <span id="balding-value">Perfect hairline</span>
         </div>
+
+        <h2>Mental</h2>
+
+        <div class="slider-container">
+            <label for="iq-slider">IQ:</label>
+            <input type="range" id="iq-slider" min="60" max="140" step="1" value="100">
+            <span id="iq-value">100</span>
+            <div class="slider-tip">60 is mentally challenged, 100 is average, 140 is genius</div>
+        </div>
+
+        <div class="slider-container">
+            <label for="autism-spectrum-slider">Autism Spectrum:</label>
+            <input type="range" id="autism-spectrum-slider" min="0" max="4" step="1" value="0">
+            <span id="autism-spectrum-value">Neurotypical</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="social-skill-slider">Social Skill:</label>
+            <input type="range" id="social-skill-slider" min="0" max="3" step="1" value="1">
+            <span id="social-skill-value">Socially inept</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="confidence-slider">Confidence Level with Women:</label>
+            <input type="range" id="confidence-slider" min="0" max="5" step="1" value="0">
+            <span id="confidence-value">No woman will ever even settle for me, I will die a KHHV</span>
+        </div>
+
+        <h2>Status</h2>
+
+        <div class="slider-container">
+            <label>Do you live with your parent(s)?</label>
+            <input type="radio" id="live-with-parents-yes" name="live-with-parents" value="yes" checked> Yes
+            <input type="radio" id="live-with-parents-no" name="live-with-parents" value="no"> No
+        </div>
+
+        <div class="slider-container">
+            <label for="friends-slider">Number of Close Friends:</label>
+            <input type="range" id="friends-slider" min="0" max="20" step="1" value="5">
+            <span id="friends-value">5</span>
+        </div>
         
         <div class="slider-container">
             <label for="history-slider">History with Women:</label>
             <input type="range" id="history-slider" min="0" max="5" step="1" value="0">
             <span id="history-value">Kissless, handholdless, hugless virgin</span>
         </div>
-        
+
         <div class="slider-container">
-            <label for="confidence-slider">Confidence Level with Women:</label>
-            <input type="range" id="confidence-slider" min="0" max="5" step="1" value="0">
-            <span id="confidence-value">No woman will ever even settle for me, I will die a KHHV</span>
+            <label for="networth-slider">Net Worth:</label>
+            <input type="range" id="networth-slider" min="0" max="5" step="1" value="3">
+            <span id="networth-value">$10,000</span>
         </div>
+    
 
         <div class="score-container">
             <p>Your Mog Score:</p>
