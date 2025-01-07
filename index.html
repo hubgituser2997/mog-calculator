@@ -608,22 +608,11 @@
             );
             
 
-            // Conditional penalties
-            if (penis <= 3) 
-                score -= 3; // Apply penalty
+            // Apply penalties or bonuses
+            if (penis <= 4) {
+                score -= 5; // Apply penalty for small penis length
             }
-
-            if (penis <= 3.5) 
-                score -= 2; // Apply penalty
-            }
-
-            if (penis <= 4) 
-                score -= 2; // Apply penalty
-            }
-            
-
-
-            
+                        
                     
             // Update the Mog Score display
             mogScore.textContent = score;
