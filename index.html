@@ -243,9 +243,10 @@
         <p>           
             Gigatruecel: 0-9<br>
             Truecel: 10-29<br>
-            Incel: 30-49<br>
-            Normie: 50 - 99<br>
+            Incel: 30-54<br>
+            Normie: 55 - 79<br>
             Average man: 73<br>
+            Chadlite: 80-99<br>
             Chad: 100-119<br>
             Gigachad: 120+
             
@@ -681,14 +682,17 @@
                 userType.textContent = "You are a: Gigatruecel";
                 userDescription.textContent = "You are beyond truecel. Your existence is pain. There is no hope.";
             } else if (score < 30) {
-                userType.textContent = "You are an: Truecel";
+                userType.textContent = "You are a: Truecel";
                 userDescription.textContent = "You an involuntary celibate with no chance of ascension."; 
-            } else if (score < 50) {
+            } else if (score < 55) {
                 userType.textContent = "You are an: Incel";
-                userDescription.textContent = "You are likely an involuntary celibate, but ascension may be possible.";            
-            } else if (score < 100) {
+                userDescription.textContent = "You are likely an involuntary celibate, but ascension may be possible.";
+            } else if (score < 85) {
                 userType.textContent = "You are a: Normie";
                 userDescription.textContent = "A Normie has average attributes in most areas.";
+            } else if (score < 100) {
+                userType.textContent = "You are a: Chadlite";
+                userDescription.textContent = "A are above average in some areas, but aren't quite on Chad's level.";
             } else if (score < 120) {
                 userType.textContent = "You are a: Chad";
                 userDescription.textContent = "You are admired by many. With above-average looks, confidence, and status, you naturally win at most aspects of life.";
