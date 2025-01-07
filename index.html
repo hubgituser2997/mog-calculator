@@ -609,8 +609,23 @@
             
 
             // Apply penalties or bonuses
+            if (penis <= 3) {
+                score -= 9; // Apply penalty for small penis length
+            }
+            if (penis <= 3.5) {
+                score -= 6; // Apply penalty for small penis length
+            }
             if (penis <= 4) {
-                score -= 5; // Apply penalty for small penis length
+                score -= 3; // Apply penalty for small penis length
+            }
+            if (face <= 1) {
+                score -= 10; // Apply penalty for terrible face
+            }
+            if (face <= 2) {
+                score -= 5; // Apply penalty for terrible face
+            }
+            if (face <= 3) {
+                score -= 2; // Apply penalty for terrible face
             }
                         
                     
