@@ -106,7 +106,7 @@
         
         <div class="slider-container">
             <label for="height-slider">Height:</label>
-            <input type="range" id="height-slider" min="60" max="84" step="1" value="72">
+            <input type="range" id="height-slider" min="60" max="78" step="1" value="72">
             <span id="height-display">
                 <span id="height-value">6ft 0in</span> (<span id="height-cm">183 cm</span>)
             </span>
@@ -249,6 +249,7 @@
             Normie: 200 - 399<br>
             Chad: 400 - 599<br>
             Gigachad: 600+
+            (This is missing the incel teir- update later, also update scores)
         </p>
         
     </div>
@@ -395,7 +396,7 @@
             const inches = heightInInches % 12;
             const cm = Math.round(heightInInches * 2.54);
 
-            heightValue.textContent = heightInInches === 60 ? `5ft or less` : heightInInches === 84 ? `7ft or more` : `${feet}ft ${inches}in`;
+            heightValue.textContent = heightInInches === 60 ? `5ft or less` : heightInInches === 78 ? `6ft 6in or more` : `${feet}ft ${inches}in`;
             heightCm.textContent = `${cm} cm`;
         }
 
