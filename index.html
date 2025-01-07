@@ -27,43 +27,54 @@
 <body>
     <div class="container">
         <h1>Mog Calculator Prototype</h1>
-        <p>Use the slider below to input your height:</p>
+        <p>Use the sliders below to input your stats:</p>
 
         <div class="slider-container">
             <label for="height-slider">Height (in feet): </label>
             <input type="range" id="height-slider" min="5" max="7" step="0.01" value="6">
-            <span id="height-value">6.00</span> ft
+            <span id="height-value">6.00</span> ft (<= 5ft to >= 7ft)
+        </div>
+
+        <div class="slider-container">
+            <label for="iq-slider">IQ: </label>
+            <input type="range" id="iq-slider" min="70" max="130" step="1" value="100">
+            <span id="iq-value">100</span> (<= 70 to >= 130)
         </div>
 
         <div class="score-container">
             <p>Your Mog Score:</p>
-            <div class="score" id="mog-score">60</div>
+            <div class="score" id="mog-score">160</div>
         </div>
     </div>
 
     <script>
-        // Get references to the slider and output elements
+        // Get references to the sliders and output elements
         const heightSlider = document.getElementById('height-slider');
         const heightValue = document.getElementById('height-value');
+        const iqSlider = document.getElementById('iq-slider');
+        const iqValue = document.getElementById('iq-value');
         const mogScore = document.getElementById('mog-score');
 
-        // Function to update height and Mog Score
+        // Function to update the Mog Score
         function updateMogScore() {
-            // Get the height value from the slider
+            // Get the values from the sliders
             const height = parseFloat(heightSlider.value);
+            const iq = parseInt(iqSlider.value);
 
-            // Update the height display
+            // Update the display values
             heightValue.textContent = height.toFixed(2);
+            iqValue.textContent = iq;
 
-            // Calculate the Mog Score (proportional to height for now)
-            const score = Math.round(height * 10); // Simple formula: height x 10
+            // Calculate the Mog Score (simple proportional formula for now)
+            const score = Math.round((height * 10) + (iq / 2)); // Height weighted more heavily
 
             // Update the Mog Score display
             mogScore.textContent = score;
         }
 
-        // Add an event listener to update the Mog Score when the slider changes
+        // Add event listeners to update the Mog Score when the sliders change
         heightSlider.addEventListener('input', updateMogScore);
+        iqSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
