@@ -603,7 +603,7 @@
                 normalizedAutism * weightAutism +
                 normalizedSocial * weightSocial +
                 baldingScore + // Example: balding contributes 5% (adjust as needed)
-                liveWithParentsScore * -weightLiveWithParents // Penalty for living with parents
+                liveWithParentsScore * weightLiveWithParents // Penalty for living with parents
             );
                     
             // Update the Mog Score display
