@@ -623,16 +623,16 @@
             const userType = document.getElementById('user-type');
             const userDescription = document.getElementById('user-description');
         
-            if (score < 200) {
+            if (score < 20) {
                 userType.textContent = "You are a: Truecel";
                 userDescription.textContent = "A Truecel is someone who struggles immensely in social and personal aspects of life. Significant improvements in lifestyle and confidence are needed.";
-            } else if (score < 300) {
+            } else if (score < 30) {
                 userType.textContent = "You are an: Incel";
                 userDescription.textContent = "Placeholder description for incel (change later)";            
-            } else if (score < 400) {
+            } else if (score < 40) {
                 userType.textContent = "You are a: Normie";
                 userDescription.textContent = "A Normie has average attributes in most areas. There's room for improvement, but you're doing okay!";
-            } else if (score < 600) {
+            } else if (score < 60) {
                 userType.textContent = "You are a: Chad";
                 userDescription.textContent = "A Chad is admired by many, with above-average looks, confidence, and status. Keep shining!";
             } else {
@@ -646,7 +646,7 @@
 
         // Function to update the score bar
         function updateScoreBar(score) {
-            const maxScore = 743; // Set the maximum score for the bar
+            const maxScore = 100; // Set the maximum score for the bar
             const scorePercentage = Math.min((score / maxScore) * 100, 100); // Calculate percentage
             const currentScoreBar = document.getElementById('current-score');
             currentScoreBar.style.width = `${scorePercentage}%`;
