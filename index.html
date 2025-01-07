@@ -67,6 +67,27 @@
             <span id="networth-value">$10,000</span>
         </div>
 
+        <div class="slider-container">
+            <label for="penis-slider">Penis Length: </label>
+            <input type="range" id="penis-slider" min="1" max="9" step="1" value="5">
+            <span id="penis-value">5 inches</span>
+            <div class="slider-tip">1 inch or less is extremely rare, 9 inches or more is exceptionally large</div>
+        </div>
+
+        <div class="slider-container">
+            <label for="acne-slider">Acne: </label>
+            <input type="range" id="acne-slider" min="0" max="4" step="1" value="2">
+            <span id="acne-value">Moderate acne</span>
+            <div class="slider-tip">0: No acne at all, 4: Face filled with acne</div>
+        </div>
+
+        <div class="slider-container">
+            <label for="muscle-slider">Muscularity: </label>
+            <input type="range" id="muscle-slider" min="0" max="3" step="1" value="1">
+            <span id="muscle-value">Somewhat muscular</span>
+            <div class="slider-tip">0: No significant muscle, 3: Superhero-level muscle</div>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -86,6 +107,12 @@
         const friendsValue = document.getElementById('friends-value');
         const netWorthSlider = document.getElementById('networth-slider');
         const netWorthValue = document.getElementById('networth-value');
+        const penisSlider = document.getElementById('penis-slider');
+        const penisValue = document.getElementById('penis-value');
+        const acneSlider = document.getElementById('acne-slider');
+        const acneValue = document.getElementById('acne-value');
+        const muscleSlider = document.getElementById('muscle-slider');
+        const muscleValue = document.getElementById('muscle-value');
         const mogScore = document.getElementById('mog-score');
 
         // Net Worth brackets
@@ -97,6 +124,23 @@
             "$1,000,000",
             "$5,000,000",
             "$10,000,000 or more"
+        ];
+
+        // Acne levels
+        const acneLabels = [
+            "No acne at all",
+            "Some acne",
+            "Moderate acne",
+            "A lot of acne",
+            "Face filled with acne"
+        ];
+
+        // Muscularity levels
+        const muscleLabels = [
+            "No significant muscle (you look like you've never stepped foot in the gym)",
+            "Somewhat muscular (people occasionally notice your muscles)",
+            "Quite muscular (people instantly notice your muscles)",
+            "Superhero-level muscle (ideal male body)"
         ];
 
         // Function to update height display in feet/inches and cm
@@ -129,6 +173,21 @@
             iqValue.textContent = iq === 60 ? `60 or less` : iq === 140 ? `140 or more` : `${iq}`;
         }
 
+        // Function to update penis length display
+        function updatePenisDisplay(length) {
+            penisValue.textContent = length === 1 ? `1 inch or less` : length === 9 ? `9 inches or more` : `${length} inches`;
+        }
+
+        // Function to update acne display
+        function updateAcneDisplay(level) {
+            acneValue.textContent = acneLabels[level];
+        }
+
+        // Function to update muscularity display
+        function updateMuscleDisplay(level) {
+            muscleValue.textContent = muscleLabels[level];
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -137,6 +196,9 @@
             const bodyFat = parseInt(bodyFatSlider.value);
             const friends = parseInt(friendsSlider.value);
             const netWorth = parseInt(netWorthSlider.value);
+            const penis = parseInt(penisSlider.value);
+            const acne = parseInt(acneSlider.value);
+            const muscle = parseInt(muscleSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
@@ -153,8 +215,17 @@
             // Update the net worth display
             updateNetWorthDisplay(netWorth);
 
+            // Update the penis length display
+            updatePenisDisplay(penis);
+
+            // Update the acne display
+            updateAcneDisplay(acne);
+
+            // Update the muscularity display
+            updateMuscleDisplay(muscle);
+
             // Calculate the Mog Score (simple proportional formula for now)
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20)); // Weighted formula
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) - (acne * 5) + (muscle * 10)); // Weighted formula
 
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -166,6 +237,9 @@
         bodyFatSlider.addEventListener('input', updateMogScore);
         friendsSlider.addEventListener('input', updateMogScore);
         netWorthSlider.addEventListener('input', updateMogScore);
+        penisSlider.addEventListener('input', updateMogScore);
+        acneSlider.addEventListener('input', updateMogScore);
+        muscleSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
