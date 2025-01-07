@@ -586,7 +586,7 @@
             const normalizedSocial = socialSkill / 3; // social range 0-3
         
             // Calculate the total score as a weighted sum
-            const score = Math.round(
+            let score = Math.round(
                 normalizedHeight * weightHeight +
                 normalizedIQ * weightIQ +
                 normalizedBodyFat * weightBodyFat +
@@ -606,21 +606,14 @@
                 baldingScore + // Example: balding contributes 5% (adjust as needed)
                 liveWithParentsScore * weightLiveWithParents // Penalty for living with parents
             );
-
-
             
-            const penis = parseFloat(penisSlider.value); // Ensure correct type
 
             // Conditional penalties
-            console.log("Penis Length:", penis); // Debugging output
-            
-            if (penis <= 4) {
-                console.log("Applying penalty for penis length <= 4"); // Debugging output
+            if (penis <= 4) 
                 score -= 5; // Apply penalty
             }
             
             if (confidence === 0) {
-                console.log("Applying penalty for confidence = 0"); // Debugging output
                 score -= 10; // Apply penalty
             }
 
