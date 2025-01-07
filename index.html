@@ -237,10 +237,10 @@
         <p id="user-description"></p>
 
         <h2>Compare your score:</h2>
-        <p>
-            Average man: 426<br>
+        <p>           
             Truecel: Below 200<br>
             Normie: 200 - 399<br>
+            Average man: 426<br>
             Chad: 400 - 599<br>
             Gigachad: 600+
             (This is missing the incel teir- update later, also update scores)
@@ -605,6 +605,14 @@
                 baldingScore + // Example: balding contributes 5% (adjust as needed)
                 liveWithParentsScore * weightLiveWithParents // Penalty for living with parents
             );
+
+            // Conditional penalties
+            if (penis <= 4) {
+                score -= 5; // Deduct 5 points for penis length 4 inches or less
+            }
+            if (penis <= 3) {
+                score -= 5; // Deduct ANOTHER 5 points for penis length 3 inches or less
+            }
                     
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -613,16 +621,16 @@
             const userType = document.getElementById('user-type');
             const userDescription = document.getElementById('user-description');
         
-            if (score < 20) {
+            if (score < 50) {
                 userType.textContent = "You are a: Truecel";
                 userDescription.textContent = "A Truecel is someone who struggles immensely in social and personal aspects of life. Significant improvements in lifestyle and confidence are needed.";
-            } else if (score < 30) {
+            } else if (score < 60) {
                 userType.textContent = "You are an: Incel";
                 userDescription.textContent = "Placeholder description for incel (change later)";            
-            } else if (score < 40) {
+            } else if (score < 80) {
                 userType.textContent = "You are a: Normie";
                 userDescription.textContent = "A Normie has average attributes in most areas. There's room for improvement, but you're doing okay!";
-            } else if (score < 60) {
+            } else if (score < 100) {
                 userType.textContent = "You are a: Chad";
                 userDescription.textContent = "A Chad is admired by many, with above-average looks, confidence, and status. Keep shining!";
             } else {
