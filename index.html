@@ -140,6 +140,12 @@
             <span id="autism-spectrum-value">Neurotypical</span>
         </div>
 
+        <div class="slider-container">
+            <label for="ethnicity-perception-slider">How do women perceive your ethnicity where you live?</label>
+            <input type="range" id="ethnicity-perception-slider" min="0" max="2" step="1" value="1">
+            <span id="ethnicity-perception-value">Some women are attracted to my ethnicity</span>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -180,6 +186,8 @@
         const mogScore = document.getElementById('mog-score');
         const liveWithParentsYes = document.getElementById('live-with-parents-yes');
         const liveWithParentsNo = document.getElementById('live-with-parents-no');
+        const ethnicityPerceptionSlider = document.getElementById('ethnicity-perception-slider');
+        const ethnicityPerceptionValue = document.getElementById('ethnicity-perception-value');
 
         // Net Worth brackets
         const netWorthLabels = [
@@ -238,8 +246,14 @@
             "Neurotypical",
             "Not diagnosed but you were the \"weird kid\" in school",
             "Asperger's syndrome",
-            "Diagnosed autism (not severe)",
+            "Autism (not severe)",
             "Severe autism"
+        ];
+
+        const ethnicityPerceptionLabels = [
+            "Women are generally not attracted to my ethnicity",
+            "Some women are attracted to my ethnicity",
+            "Women generally love my ethnicity"
         ];
 
         // Function to update height display in feet/inches and cm
@@ -317,6 +331,10 @@
             autismSpectrumValue.textContent = autismSpectrumLabels[level];
         }
 
+        function updateEthnicityPerceptionDisplay(level) {
+            ethnicityPerceptionValue.textContent = ethnicityPerceptionLabels[level];
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -334,6 +352,7 @@
             const bodyFrame = parseInt(bodyFrameSlider.value);
             const voiceDepth = parseInt(voiceDepthSlider.value);
             const autismSpectrum = parseInt(autismSpectrumSlider.value);
+            const ethnicityPerception = parseInt(ethnicityPerceptionSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
@@ -377,10 +396,12 @@
             // Update the autism spectrum display
             updateAutismSpectrumDisplay(autismSpectrum);
 
+            // Update the ethnicity perception display
+            updateEthnicityPerceptionDisplay(ethnicityPerception);
+
             // Calculate the Mog Score (simple proportional formula for now)
             const liveWithParentsScore = liveWithParentsNo.checked ? 20 : 0;
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) + (girth * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10) + liveWithParentsScore - (autismSpectrum * 10));
-
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) + (girth * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10) + liveWithParentsScore - (autismSpectrum * 10) + (ethnicityPerception * 10));
             // Update the Mog Score display
             mogScore.textContent = score;
         }
@@ -402,6 +423,7 @@
         autismSpectrumSlider.addEventListener('input', updateMogScore);
         liveWithParentsYes.addEventListener('change', updateMogScore);
         liveWithParentsNo.addEventListener('change', updateMogScore);
+        ethnicityPerceptionSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
