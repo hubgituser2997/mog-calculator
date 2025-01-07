@@ -577,6 +577,7 @@
             const normalizedHistory = history / 5; // History range 0-5
             const normalizedMuscularity = muscle / 3 // muscularity range 0-3
             const normalizedFrame = frame / 3; // Frame range 0-3
+            const normalizedVoice = voice / 4; // Voice range 0-4
         
             // Calculate the total score as a weighted sum
             const score = Math.round(
@@ -592,6 +593,7 @@
                 normalizedHistory * weightHistory +
                 normalizedMuscularity * weightMuscularity +
                 normalizedFrame * weightFrame +
+                normalizedVoice * weightVoice +
                 baldingScore + // Example: balding contributes 5% (adjust as needed)
                 liveWithParentsScore * -weightLiveWithParents // Penalty for living with parents
             );
