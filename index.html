@@ -646,6 +646,9 @@
             if (voiceDepth <= 1) {
                 score -= 2; // Apply penalty for high pitch voice
             }
+             if (height <= 69) {
+                    score -= (69 - height); // Apply extra penalty for each inch below 5ft 9in
+            }
 
             // Set minimum possible score to zero
             if (score <= 0) {
@@ -662,19 +665,19 @@
         
             if (score < 50) {
                 userType.textContent = "You are a: Truecel";
-                userDescription.textContent = "A Truecel is someone who struggles immensely in social and personal aspects of life. Significant improvements in lifestyle and confidence are needed.";
+                userDescription.textContent = "It's over for you bro.";
             } else if (score < 60) {
                 userType.textContent = "You are an: Incel";
-                userDescription.textContent = "Placeholder description for incel (change later)";            
+                userDescription.textContent = "You are likely an involuntary celibate, but ascension may be possible.";            
             } else if (score < 80) {
                 userType.textContent = "You are a: Normie";
-                userDescription.textContent = "A Normie has average attributes in most areas. There's room for improvement, but you're doing okay!";
+                userDescription.textContent = "A Normie has average attributes in most areas.";
             } else if (score < 100) {
                 userType.textContent = "You are a: Chad";
-                userDescription.textContent = "A Chad is admired by many, with above-average looks, confidence, and status. Keep shining!";
+                userDescription.textContent = "You are admired by many. With above-average looks, confidence, and status, you naturally win at most aspects of life.";
             } else {
                 userType.textContent = "You are a: Gigachad";
-                userDescription.textContent = "A Gigachad is the pinnacle of attraction and dominance. Few can reach this level. Congratulations!";
+                userDescription.textContent = "You are the pinnacle of attraction and dominance. Few will ever experince life at your level.";
             }
 
             // Update the score bar
