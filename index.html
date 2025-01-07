@@ -51,6 +51,48 @@
             color: #333;
             text-align: left;
         }
+
+        .score-bar-container {
+            position: relative;
+            margin: 20px 0;
+            width: 100%;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .score-bar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff4d4d, #ffcc00, #00cc66);
+        }
+        
+        .current-score {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background-color: #0078D7;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+        }
+        
+        .thresholds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .threshold {
+            position: absolute;
+            bottom: 35px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -183,10 +225,19 @@
         </div>
     
 
-        <div class="score-container">
-            <p>Your Mog Score:</p>
-            <div class="score" id="mog-score">160</div>
+        <h2>Your Mog Score</h2>
+        <div class="score-bar-container">
+            <div class="thresholds">
+                <div class="threshold" style="left: 10%;">Incel</div>
+                <div class="threshold" style="left: 50%;">Chad</div>
+                <div class="threshold" style="left: 70%;">Gigachad</div>
+            </div>
+            <div class="score-bar">
+                <div class="current-score" id="current-score"></div>
+            </div>
         </div>
+        <p>Your score: <span id="score-value">0</span></p>
+        
     </div>
 
     <script>    
@@ -523,6 +574,20 @@
                     
             // Update the Mog Score display
             mogScore.textContent = score;
+
+            // Update the score bar
+            updateScoreBar(score);
+        }
+
+        // Function to update the score bar
+        function updateScoreBar(score) {
+            const maxScore = 1000; // Set the maximum score for the bar
+            const scorePercentage = Math.min((score / maxScore) * 100, 100); // Calculate percentage
+            const currentScoreBar = document.getElementById('current-score');
+            currentScoreBar.style.width = `${scorePercentage}%`;
+        
+            const scoreValue = document.getElementById('score-value');
+            scoreValue.textContent = score; // Update the text displaying the score
         }
 
         // Add event listeners to update the Mog Score when the sliders change
