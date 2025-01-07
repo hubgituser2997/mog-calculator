@@ -116,6 +116,12 @@
             <span id="body-frame-value">Unusual frame</span>
         </div>
 
+        <div class="slider-container">
+            <label for="voice-depth-slider">Voice Depth:</label>
+            <input type="range" id="voice-depth-slider" min="0" max="4" step="1" value="2">
+            <span id="voice-depth-value">Normal male voice pitch</span>
+        </div>
+
         <div class="score-container">
             <p>Your Mog Score:</p>
             <div class="score" id="mog-score">160</div>
@@ -147,6 +153,8 @@
         const socialSkillValue = document.getElementById('social-skill-value');
         const bodyFrameSlider = document.getElementById('body-frame-slider');
         const bodyFrameValue = document.getElementById('body-frame-value');
+        const voiceDepthSlider = document.getElementById('voice-depth-slider');
+        const voiceDepthValue = document.getElementById('voice-depth-value');
         const mogScore = document.getElementById('mog-score');
 
         // Net Worth brackets
@@ -190,6 +198,15 @@
             "Unusual frame",
             "Normal frame",
             "Masculine frame"
+        ];
+
+        // Voice depth levels
+        const voiceDepthLabels = [
+            "Very deep voice (you are known for your deep voice)",
+            "Somewhat deep voice",
+            "Normal male voice pitch",
+            "Somewhat high pitch voice",
+            "Feminine sounding voice"
         ];
 
         // Function to update height display in feet/inches and cm
@@ -252,6 +269,11 @@
             bodyFrameValue.textContent = bodyFrameLabels[level];
         }
 
+        // Function to update voice depth display
+        function updateVoiceDepthDisplay(level) {
+            voiceDepthValue.textContent = voiceDepthLabels[level];
+        }
+
         // Function to update the Mog Score
         function updateMogScore() {
             // Get the values from the sliders
@@ -266,6 +288,7 @@
             const face = parseInt(faceSlider.value);
             const socialSkill = parseInt(socialSkillSlider.value);
             const bodyFrame = parseInt(bodyFrameSlider.value);
+            const voiceDepth = parseInt(voiceDepthSlider.value);
 
             // Update the height display
             updateHeightDisplay(height);
@@ -300,8 +323,11 @@
             // Update the body frame display
             updateBodyFrameDisplay(bodyFrame);
 
+            // Update the voice depth display
+            updateVoiceDepthDisplay(voiceDepth);
+
             // Calculate the Mog Score (simple proportional formula for now)
-            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10)); // Weighted formula
+            const score = Math.round((height * 10 / 12) + (iq / 2) - (bodyFat / 5) + (friends * 2) + (netWorth * 20) + (penis * 5) - (acne * 5) + (muscle * 10) + (face * 10) + (socialSkill * 15) + (bodyFrame * 10) + (voiceDepth * -10)); // Weighted formula
 
             // Update the Mog Score display
             mogScore.textContent = score;
@@ -319,9 +345,11 @@
         faceSlider.addEventListener('input', updateMogScore);
         socialSkillSlider.addEventListener('input', updateMogScore);
         bodyFrameSlider.addEventListener('input', updateMogScore);
+        voiceDepthSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
         updateMogScore();
     </script>
 </body>
 </html>
+
