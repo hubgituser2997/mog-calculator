@@ -575,6 +575,7 @@
             const normalizedFriends = friends / 20; // Friends range 0-20
             const normalizedNetWorth = netWorth / 5; // Net Worth range 0-5
             const normalizedHistory = history / 5; // History range 0-5
+            const normalizedMuscularity = muscularity / 3 // muscularity range 0-3
         
             // Calculate the total score as a weighted sum
             const score = Math.round(
@@ -588,6 +589,7 @@
                 normalizedFriends * weightFriends +
                 normalizedNetWorth * weightNetWorth +
                 normalizedHistory * weightHistory +
+                normalizedMuscularity * weightMuscularity
                 baldingScore + // Example: balding contributes 5% (adjust as needed)
                 liveWithParentsScore * -weightLiveWithParents // Penalty for living with parents
             );
