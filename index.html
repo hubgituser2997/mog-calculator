@@ -613,7 +613,11 @@
         confidenceSlider.addEventListener('input', updateMogScore);
 
         // Initialize the Mog Score on page load
-        updateMogScore();
+        //updateMogScore();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateMogScore(); // Initialize the Mog Score after DOM is ready
+        });
     </script>
 </body>
 </html>
