@@ -173,7 +173,7 @@
             <label for="iq-slider">IQ:</label>
             <input type="range" id="iq-slider" min="60" max="140" step="1" value="100">
             <span id="iq-value">100</span>
-            <div class="slider-tip">60 is mentally challenged, 100 is average, 140 is genius</div>
+            <div class="slider-tip">60 is retarded, 100 is average, 140 is genius</div>
         </div>
 
         <div class="slider-container">
@@ -607,13 +607,24 @@
                 liveWithParentsScore * weightLiveWithParents // Penalty for living with parents
             );
 
+
+            
+            const penis = parseFloat(penisSlider.value); // Ensure correct type
+
             // Conditional penalties
+            console.log("Penis Length:", penis); // Debugging output
+            
             if (penis <= 4) {
-                score -= 5; // Deduct 5 points for penis length 4 inches or less
+                console.log("Applying penalty for penis length <= 4"); // Debugging output
+                score -= 5; // Apply penalty
             }
-            if (penis <= 3) {
-                score -= 5; // Deduct ANOTHER 5 points for penis length 3 inches or less
+            
+            if (confidence === 0) {
+                console.log("Applying penalty for confidence = 0"); // Debugging output
+                score -= 10; // Apply penalty
             }
+
+            
                     
             // Update the Mog Score display
             mogScore.textContent = score;
