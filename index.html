@@ -674,7 +674,10 @@
             if (score <= 0) {
                 score = 0;
             }
-                        
+
+            // Set minimum possible score to the bottom of normie if the person has had sex before
+            if (history >= 4 && score <= 55) {
+                score = 55
                     
             // Update the Mog Score display
             mogScore.textContent = score;
