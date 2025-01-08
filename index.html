@@ -220,6 +220,7 @@
             <label for="history-slider">History with Women:</label>
             <input type="range" id="history-slider" min="0" max="5" step="1" value="0">
             <span id="history-value">Kissless, handholdless, hugless virgin</span>
+            <div class="slider-tip">Anything with prostitutes/escorts does not count</div>
         </div>
 
         <div class="slider-container">
@@ -663,10 +664,12 @@
             if (voiceDepth <= 1) {
                 score -= 2; // Apply penalty for high pitch voice
             }
-             if (height <= 69) {
-                    score -= (69 - height); // Apply extra penalty for each inch below 5ft 9in
+            if (height <= 69) {
+                score -= (69 - height); // Apply extra penalty for each inch below 5ft 9in
             }
-
+            if (friends <= 0) {
+                score -= 2 // Apply penatly for having no friends
+            }
             // Set minimum possible score to zero
             if (score <= 0) {
                 score = 0;
