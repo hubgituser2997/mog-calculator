@@ -122,9 +122,9 @@
 
         <div class="slider-container">
             <label for="face-slider">Face Rating (1-10):</label>
-            <input type="range" id="face-slider" min="1" max="10" step="1" value="5">
+            <input type="range" id="face-slider" min="0" max="10" step="1" value="5">
             <span id="face-value">5</span>
-            <div class="slider-tip">1 is severe facial deformity, 5 is average, 10 is perfection</div>
+            <div class="slider-tip">0 is severe facial deformity, 5 is average, 10 is perfection</div>
         </div>
 
         <div class="slider-container">
@@ -587,7 +587,7 @@
             const normalizedPenis = (penis - 3) / (10 - 3); // Penis range 3-10 inches
             const normalizedGirth = (girth - 3) / (9 - 3) //Girth range 3-9 inches
             const normalizedConfidence = confidence / 5; // Confidence range 0-5
-            const normalizedFace = face / 10; // Face range 1-10
+            const normalizedFace = face / 11; // Face range 0-10
             const normalizedFriends = friends / 20; // Friends range 0-20
             const normalizedNetWorth = netWorth / 5; // Net Worth range 0-5
             const normalizedHistory = history / 5; // History range 0-5
@@ -631,11 +631,14 @@
             if (penis <= 4) {
                 score -= 3; // Apply penalty for small penis length
             }
+            if (face <= 0) {
+                score -= 5; // Apply penalty for terrible face
+            }
             if (face <= 1) {
-                score -= 7; // Apply penalty for terrible face
+                score -= 3; // Apply penalty for terrible face
             }
             if (face <= 2) {
-                score -= 3; // Apply penalty for terrible face
+                score -= 2; // Apply penalty for terrible face
             }
             if (face <= 3) {
                 score -= 2; // Apply penalty for terrible face
